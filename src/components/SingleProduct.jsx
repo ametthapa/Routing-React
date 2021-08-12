@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const SingleProduct = ( ) =>{
+const SingleProduct = ( props ) =>{
+
+    const productId = props.match.params.productId;
 
     const [product, setProduct] = useState([]);
 
@@ -9,7 +11,7 @@ const SingleProduct = ( ) =>{
     }, []);
 
     const fetchProduct = async () =>{
-        const data = await fetch(`https://fakestoreapi.com/products/1`);
+        const data = await fetch(`https://fakestoreapi.com/products/${productId}`);
 
         const apiItem = await data.json();
 
@@ -19,7 +21,7 @@ const SingleProduct = ( ) =>{
     console.log(product);
 
     return(
-        <div className="flex justify-around">
+        <div className="flex justify-around md:flex-row flex-col p-24">
             <img src={product.image} alt={product.title} className="h-96 w-96"/>
             <div>
                 <div className="p-8 font-bold text-2xl">{product.title}</div>

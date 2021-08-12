@@ -26,7 +26,7 @@ const SingleProduct = ( props ) =>{
             <div>
                 <div className="p-8 font-bold text-2xl">{product.title}</div>
                 <div className="p-8 pt-0 font-semibold text-lg">{product.description}</div>
-                <div className="text-red-700 font-bold p-8 pt-0">{product.price}</div>
+                <div className="text-red-700 font-bold p-8 pt-0">$ {product.price}</div>
             </div>
         </div>
     )

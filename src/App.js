@@ -1,6 +1,9 @@
 import About from './components/About'
 import Shop from './components/Shop'
 import Nav from './components/Nav'
+import SingleProduct from './components/SingleProduct'
+
+import './index.css';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -11,8 +14,9 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path='/about' component={About} />
-          <Route path='/shop' component={Shop} />
+          <Route path='/about' exact component={About} />
+          <Route path='/shop' exact component={Shop} />
+          <Route path='/shop/:id' component={ SingleProduct } />
           </Switch>
       </div>  
     </Router>

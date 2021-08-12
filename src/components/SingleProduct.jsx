@@ -1,53 +1,33 @@
 import React, { useState, useEffect } from "react";
 
+const SingleProduct = ( ) =>{
 
-// inital render
+    const [product, setProduct] = useState([]);
 
-// whenever we call hooks component re-render
+    useEffect(() => {
+        fetchProduct();
+    }, []);
 
-const SingleProduct = ( match ) => {
-  // skip
-  const [item, setItem] = useState([]);
-  const [fetching, setFetching] = useState(false);
+    const fetchProduct = async () =>{
+        const data = await fetch(`https://fakestoreapi.com/products/1`);
 
-  // skip
-  useEffect(() => {
-    fetchItem();
-  }, );
+        const apiItem = await data.json();
 
-  // skip
-  const fetchItem = async () => {
-      setFetching(true);
-      const data = await fetch(`https://fakestoreapi.com/products/${match.params.id}`);
+        setProduct(apiItem);
+    }
 
-      const singleProduct = await data.json();
+    console.log(product);
 
-      setItem(singleProduct);
-      setFetching(false);
-  };
+    return(
+        <div className="flex justify-around">
+            <img src={product.image} alt={product.title} className="h-96 w-96"/>
+            <div>
+                <div className="p-8 font-bold text-2xl">{product.title}</div>
+                <div className="p-8 pt-0 font-semibold text-lg">{product.description}</div>
+                <div className="text-red-700 font-bold p-8 pt-0">{product.price}</div>
+            </div>
+        </div>
+    )
+}
 
-  // not skip
-  if (fetching === true) {
-    return <div>Loading...</div>;
-  }
-
-  // not skip
-  console.log(item)
-
-
-  
-
-  // not skip
-  return (
-    <div>
-      <h1 className="text-3xl font-bold">Product Detaiils</h1>
-      {/* {item.map((item) => {
-          return (
-            <div> {item.name} </div>
-          )
-      }) } */}
-    </div>
-  );
-};
-
-export default SingleProduct;
+export default SingleProduct

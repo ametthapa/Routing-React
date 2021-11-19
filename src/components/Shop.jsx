@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // inital render
 
@@ -32,10 +32,7 @@ const Shop = () => {
   }
 
   // not skip
-  console.log(items)
-
-
-  
+  console.log(items);
 
   // not skip
   return (
@@ -46,17 +43,16 @@ const Shop = () => {
           return (
             <Link to={`/shop/${item.id}`}>
               <div className="p-4 w-3/4" key={item.id}>
-                  <img
-                    alt={item.title}
-                    style={{ height: 200, width: 200 }}
-                    src={item.image}
-                  />
-                  
-                  <h4>{item.title}</h4>
-                  <h3 style={{ fontWeight: "bold", color: "tomato" }}>
-                    Rs. {item.price}
-                  </h3>
-                
+                <img
+                  alt={item.title}
+                  style={{ height: 200, width: 200 }}
+                  src={item.image}
+                />
+
+                <h4>{item.title}</h4>
+                <h3 style={{ fontWeight: "bold", color: "tomato" }}>
+                  Rs. {item.price}
+                </h3>
               </div>
             </Link>
           );
